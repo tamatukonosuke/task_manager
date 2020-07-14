@@ -6,6 +6,9 @@
 
 {% block content %}
 <h3>一覧表示</h3>
+
+<a href="{% url 'task_management_app:add' %}" class="btn btn-primary btn-sm">追加</a>
+
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -13,17 +16,40 @@
             <th>氏名</th>
             <th>E-Mail</th>
             <th>年齢</th>
+            <th>操作</th>
         </tr>
     </thead>
     <tbody>
         {% for member in members %}
         <tr>
             <td>{{ member.id }}</td>
-            <td>{{ member.name }}</td>
+            <td><a href="{% url 'task_management_app:detail' id=member.id %}">{{ member.name }}</a></td>
             <td>{{ member.email }}</td>
             <td>{{ member.age }}</td>
+            <td>
+                <a href="{% url 'task_management_app:edit' id=member.id %}" class="btn btn-primary btn-sm">編集</a>
+                <a href="{% url 'task_management_app:delete' id=member.id %}" class="btn btn-primary btn-sm" id="btn_del">削除</a>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+<!-- ページネーションをここに入れる -->
+
 {% endblock content %}
+
+<!-- jsを入れる -->
+{% block script %}
+<script>
+    $(function(){
+        $("#btn_del").click(function(){
+            if(confirm("削除しますか？")){
+                //yesの処理（何もぜず進む）
+            }else{
+                //cancelの処理
+                return false;
+            }
+        });
+    })
+</script>
+{% endblock %}
