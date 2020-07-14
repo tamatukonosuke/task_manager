@@ -5,13 +5,15 @@ from task_management_app.forms import MemberForm
 from collections import OrderedDict
 import json
 
+from django.contrib.auth.decorators import login_required
+
 
 
 def one(request):
     members = Member.objects.all().order_by('id')
     return render(request, 'members/index.html', {'members':members})
 
-
+@login_required
 def index(request):
     members = Member.objects.all().order_by('id') #値を取得
     return render(request, 'members/index.html', {'members':members}) #Templateに値を渡す
