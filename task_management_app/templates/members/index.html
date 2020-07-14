@@ -1,14 +1,12 @@
 {% extends "base.html" %}
 
 {% block title %}
-一覧を表示する予定
+一覧
 {% endblock title %}
 
 {% block content %}
 
-
-
-<h3>一覧表示</h3>
+<a href="{% url 'task_management_app:logout'  %}" class="btn btn-primary btn-sm">ログアウト</a><h3>一覧表示</h3>
 
 <a href="{% url 'task_management_app:add' %}" class="btn btn-primary btn-sm">追加</a>
 
