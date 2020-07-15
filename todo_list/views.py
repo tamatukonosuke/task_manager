@@ -30,3 +30,16 @@ def delete(request, list_id):
     item.delete()
     messages.success(request, ('Item Has Been Deleted from List!'))
     return redirect('todo_list:home')
+
+def uncomplete(request, list_id):
+    item = List.objects.get(pk=list_id)
+    item.completed = False
+    item.save()
+    return redirect('todo_list:home')
+
+
+def complete(request, list_id):
+    item = List.objects.get(pk=list_id)
+    item.completed = True
+    item.save()
+    return redirect('todo_list:home')

@@ -5,4 +5,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
     path('delete/<list_id>', views.delete, name="delete"),
+    path('uncomplete/<list_id>', views.uncomplete, name="uncomplete"),
+    path('complete/<list_id>', views.complete, name="complete"),
 ]
