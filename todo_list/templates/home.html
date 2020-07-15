@@ -19,21 +19,25 @@
 
 {% if all_items %}
 <table class="table table-bordered">
+  <tr class="table-primary">
+    <th>TO-DO ITEM</th>
+    <th><center>STATUS CHANGE</center></th>
+    <th><center>DELETE ITEM</center></th>
+  </tr>
     {% for todo in all_items %}
-        {% if todo.completed %}
-            <tr class="table-secondary">
-                <td class="striker">{{ todo.item }}</td>
-                <td><center><a href="{% url 'todo_list:uncomplete' todo.id %}"><div class="bg-warning rounded">Uncomplete</div></a></center></td>
-                    <td><center><a href="{% url 'todo_list:delete' todo.id %}"><div class="bg-warning rounded">Delete</div></a></center></td>
-                 </td>
-            </tr>
-        {% else %}
-            <tr class="table-info">
-                <td>{{ todo.item }}</td>
-                <td><center><a href="{% url 'todo_list:complete' todo.id %}"><div class="bg-light rounded">Complete</div></a></center></td>
-                <td><center><a href="{% url 'todo_list:delete' todo.id %}"><div class="bg-light rounded">Delete</div></a></center></td>
-            </tr>
-        {% endif %}
+      {% if todo.completed %}
+      <tr class="table-secondary">
+          <td class="striker">{{ todo.item }}</td>
+          <td><center><a href="{% url 'todo_list:uncomplete' todo.id %}"><div class="bg-warning rounded">Uncomplete</div></a></center></td>
+          <td><center><a href="{% url 'todo_list:delete' todo.id %}"><div class="bg-warning rounded">Delete</div></a></center></td>
+      </tr>
+      {% else %}
+        <tr class="table-info">
+          <td><a href="{% url 'todo_list:edit' todo.id %}">{{ todo.item }}</td></td>
+          <td><center><a href="{% url 'todo_list:complete' todo.id %}"><div class="bg-light rounded">Complete</div></a></center></td>
+          <td><center><a href="{% url 'todo_list:delete' todo.id %}"><div class="bg-light rounded">Delete</div></a></center></td>
+        </tr>
+      {% endif %}
     {% endfor %}
 </table>
 {% endif %}
