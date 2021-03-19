@@ -52,7 +52,7 @@ Django==2.0.2
 django-bootstrap-form==3.4
 django-filter==2.2.0
 django-heroku==0.3.1
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 docutils==0.14
 entrypoints==0.3
 et-xmlfile==1.0.1
